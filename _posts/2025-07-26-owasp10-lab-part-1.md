@@ -87,6 +87,13 @@ Now when we access `/dashboard/1`, we're in!
 
 ![Admin Dashboard](/assets/img/55063156.png)
 
+### Mitigation
+
+Be sure to sign and encrypt whenever possible. In this case, it would be
+trivial to generate a complex key and change the signature algorithm from
+`none` to `HS256`. This would be sufficient to prevent the token forgery that
+allowed us to impersonate the admin.
+
 ## 3. Injection (and more bad cryptography)
 
 ### Definitions
@@ -119,6 +126,18 @@ what kind of hash something is with online tools such as
 hash, so we should be able to crack it quite easily using online tools.
 
 ![Admin Password](/assets/img/42d7cce3.png)
+
+### Mitigation
+
+Anywhere that would allow a user to execute arbitrary commands should be
+heavily protected and often it is best to limit the capabilities of these
+features. Though not shown in this example, even forms that are not intended to
+execute arbitrary commands can be used to do so if fed into some kind of
+interpreter (think SQL injections).
+
+As for the passwords, they should not have been hashed with SHA-256. A secure
+key derivation function (KDF) should be used instead, like argon2 or bcrypt.
+These algorithms both take salts and are purpose built for storing passwords.
 
 ## 4. Insecure Design
 
@@ -165,6 +184,14 @@ rate limiting of any kind in place and no password policy set, brute forcing
 becomes quite easy when users don't go out of their way to set secure
 passwords.
 
+### Mitigation
+
+In this case, this kind of brute force attack could be prevented by
+implementing a lockout policy and enforcing complex passwords. A brute force
+attack would not be nearly as feasible if I wasn't allowed to attempt a login
+more than 3 times every 15 minutes per IP address or if the password was
+complex enough and not easily guessable.
+
 ## 5. Security Misconfiguration
 
 ### Definitions
@@ -191,5 +218,23 @@ While this alone would likely not be enough to bypass authentication or do
 something malicious, a lot of information is disclosed from verbose error
 messages.
 
+### Mitigation
+
+Simply removing `debug=True` from `app.run` is sufficient to not print verbose
+error messages. That aside, better error checking and safer operations should
+be used such that the web app rarely throws exceptions in the first place. For
+example, instead of indexing `request.form` directly,
+`request.form.get("Password", None)` could have been used instead to get
+"Password" without ever throwing an exception. A check can then be made if the
+value of this is `None` and the app can fail safely.
+
 ## Conclusion
 
+This lab covered five critical OWASP Top 10 risks: Broken Access Control,
+Cryptographic Failures, Injection, Insecure Design, and Security
+Misconfiguration. Each example showed how simple mistakes in code or
+configuration can lead to serious vulnerabilities.
+
+By understanding these issues and applying proper security practices early,
+developers can reduce risk and build more secure applications. The next part
+of this lab will cover the remaining five risks.
