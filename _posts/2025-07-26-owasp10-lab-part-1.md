@@ -3,7 +3,7 @@ title: OWASP Top 10 Lab (Part 1)
 date: 2025-07-26 12:00:00 -0400
 categories: [Projects]
 tags: [AppSec]
-# image: /assets/img/
+image: /assets/img/d1168706.png
 ---
 
 The [OWASP Top 10](https://owasp.org/www-project-top-ten/) is a list of 10
