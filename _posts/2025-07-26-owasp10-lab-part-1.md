@@ -162,7 +162,7 @@ Below is a breakdown of the command and its output:
 - `-s 5000`: Use port 5000.
 - `/login`: The endpoint to target
 - `Username=^USER^&Password=^PASS^`: What to send in the POST request body.
-    - The fields `Username` and `Password` could be found by inspecting the HTML
+  - The fields `Username` and `Password` could be found by inspecting the HTML
       of the login form.
 - `Invalid`: Text contained on failed login pages. Anything attempts that have a
   response with this text will not be shown.
