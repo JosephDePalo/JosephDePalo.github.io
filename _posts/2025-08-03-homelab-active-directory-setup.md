@@ -150,6 +150,7 @@ few additional steps are required.
    ```
 
 2. Ensure `libpam-mkhomedir` is installed and then run `sudo pam-auth-update`.
+   Check the *Create home directory on login* box and exit.
 
 Now when we login to `jd\john-doe`, we should see that we are in our home
 directory `/home/john-doe`.
