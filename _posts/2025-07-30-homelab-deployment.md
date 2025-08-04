@@ -51,8 +51,8 @@ The below table describes the machines deployed in my lab.
 
 | Hostname | OS | Components | User |
 | --------------- | --------------- | --------------- | --------------- |
-| LWAZ01 | Ubuntu 24.04 | Wazuh Stack, Splunk UF | king-frieza |
-| LSPL01 | Ubuntu 24.04 | Splunk Enterprise | king-frieza |
+| LWAZ01 | Ubuntu 24.04 | Wazuh Stack, Splunk UF | king-cold |
+| LSPL01 | Ubuntu 24.04 | Splunk Enterprise | king-cold |
 | LUBU01 | Ubuntu 24.04 | Wazuh Agent | john-doe |
 | LWIN01 | Windows 10 | Wazuh Agent, Sysmon | bob-brown |
 

@@ -17,19 +17,19 @@ change. Here's why.
 
 ## The Problem with not Having Centralized Identity Management
 
-I have an admin account on my Wazuh and Splunk machines called `king-frieza`.
+I have an admin account on my Wazuh and Splunk machines called `king-cold`.
 This is supposed to be a single account for a single admin, but these accounts
 are completely separate besides the fact that they have the same username and
 password.
 
-Let's say I needed to change the password for `king-frieza`. This
-would require me to login to each machine that `king-frieza` is on (`LWAZ01`
+Let's say I needed to change the password for `king-cold`. This
+would require me to login to each machine that `king-cold` is on (`LWAZ01`
 and `LSPL01` in this case) and change the password for the local user account.
 This may not be a terrible process for 2 machines, but what if I had 20
 instead? A small change such as that could take an hour or more. There's also
 no guarantees that there is any consistency between the accounts or guarantees
 that an account is who they say they are; anybody with sudo or root privileges
-can spin up an account called `king-frieza`.
+can spin up an account called `king-cold`.
 
 ## Centralized IAM with Active Directory
 
@@ -45,7 +45,7 @@ include:
 
 Right now, we are mainly concerned with how AD simplifies user management. We
 will explore some of its many other features in future posts. Using AD, I can
-have a single `king-frieza` account that can be used across multiple machines
+have a single `king-cold` account that can be used across multiple machines
 and services. AD is now our one stop shop for anything to do with managing this
 account.
 
