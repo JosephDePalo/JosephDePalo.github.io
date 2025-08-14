@@ -93,7 +93,7 @@ One of the first things I tried was to use `curl` instead of my browser.
 Interestingly enough, it worked fine and `curl` was able to verify my
 certificate without problem. With a little more research, it seems that most
 modern browsers actually do not check if the domain name matches the common
-name of the certificate, but one of the subject alternate names (SANs) instead.
+name of the certificate, but one of the subject alternative names (SANs) instead.
 That field was missing from my certificate, so there was nothing to verify the
 domain name against and my client failed. `curl` uses both, so there were no
 issues there.
